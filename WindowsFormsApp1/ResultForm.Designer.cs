@@ -1,16 +1,16 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form1
+    partial class ResultForm
     {
         /// <summary>
-        /// Обязательная переменная конструктора.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Освободить все используемые ресурсы.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,68 +20,59 @@
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором форм Windows
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             this.panAndZoomPictureBox1 = new Emgu.CV.UI.PanAndZoomPictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panAndZoomPictureBox1
             // 
-            this.panAndZoomPictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panAndZoomPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panAndZoomPictureBox1.Location = new System.Drawing.Point(0, 24);
             this.panAndZoomPictureBox1.Name = "panAndZoomPictureBox1";
-            this.panAndZoomPictureBox1.Size = new System.Drawing.Size(684, 426);
+            this.panAndZoomPictureBox1.Padding = new System.Windows.Forms.Padding(20);
+            this.panAndZoomPictureBox1.Size = new System.Drawing.Size(800, 426);
             this.panAndZoomPictureBox1.TabIndex = 0;
             this.panAndZoomPictureBox1.TabStop = false;
-            this.panAndZoomPictureBox1.Click += new System.EventHandler(this.PanAndZoomPictureBox1_Click);
-            this.panAndZoomPictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.PanAndZoomPictureBox1_Paint);
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.clearToolStripMenuItem});
+            this.saveToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // openToolStripMenuItem
+            // saveToolStripMenuItem
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenFileClick);
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.OnSave_Click);
             // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.clearToolStripMenuItem.Text = "Clear";
-            this.clearToolStripMenuItem.Click += new System.EventHandler(this.OnClear_Click);
-            // 
-            // Form1
+            // ResultForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panAndZoomPictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "ResultForm";
+            this.Text = "ResultForm";
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -94,8 +85,6 @@
 
         private Emgu.CV.UI.PanAndZoomPictureBox panAndZoomPictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
     }
 }
-
