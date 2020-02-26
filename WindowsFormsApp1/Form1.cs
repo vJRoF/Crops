@@ -128,6 +128,8 @@ namespace WindowsFormsApp1
         private void Form1_NeedInvalidate()
         {
             this.Invalidate(true);
+
+            Transform();
         }
 
         private RectangleF _clipBounds;
@@ -138,7 +140,6 @@ namespace WindowsFormsApp1
 
             _clipBounds = e.Graphics.ClipBounds;
             DrawScaffolding(e.Graphics);
-            Transform();
         }
 
         private PointF GetRealPoint(int x, int y)
