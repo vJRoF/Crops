@@ -19,20 +19,17 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-
-            if( _imageProcessor!= null )
-                e.Graphics.DrawImage(_imageProcessor.GetResultImage(), 0, 0);
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             _imageProcessor = new ImageProcessor();
             _imageProcessor.Open(@"C:\Users\vladi\Pictures\Saved Pictures\om2j_txb1e2yqhvmjeoi-cydtgo.png");
+            this.Invalidate();
+        }
 
-            groupBox1.Invalidate();
+        private void groupBox1_Paint(object sender, PaintEventArgs e)
+        {
+            if (_imageProcessor != null)
+                e.Graphics.DrawImage(_imageProcessor.GetResultImage(), groupBox1.DisplayRectangle);
         }
     }
 }
