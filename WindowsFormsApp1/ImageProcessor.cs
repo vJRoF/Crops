@@ -1,10 +1,7 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace WindowsFormsApp1
 {
@@ -14,7 +11,12 @@ namespace WindowsFormsApp1
 
         public void Open(string path)
         {
-            Image<Bgr, Byte> src = new Image<Bgr, byte>(path);
+            _src = new Image<Bgr, byte>(path);
+        }
+
+        public Bitmap GetResultImage()
+        {
+            return _src.ToBitmap();
         }
         
         public void Dispose()
@@ -22,6 +24,7 @@ namespace WindowsFormsApp1
             if (_src!= null)
             {
                 _src.Dispose();
+                _src = null;
             }
         }
     }
