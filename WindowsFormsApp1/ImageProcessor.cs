@@ -1,6 +1,8 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
+using JetBrains.Annotations;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 
 namespace WindowsFormsApp1
@@ -10,26 +12,44 @@ namespace WindowsFormsApp1
         private Image<Bgr, Byte> _src;
         private Image<Gray, Byte> _dst;
 
-        public bool Gaussian { get; internal set; }
+        public bool Gaussian { get; internal set; } = true;
+        public int GaussianKernelSize { get; internal set; } = 5;
+
+
+        public bool Canny { get; internal set; } = true;
 
         public void Open(string path)
         {
             _src = new Image<Bgr, byte>(path);
         }
 
+        [CanBeNull]
         public Bitmap GetResultImage()
         {
-            if (_src == null)
-                return null;
+            try
+            {
+                if (_src == null)
+                    return null;
 
-            _dst = _src.Convert<Gray, byte>();
+                var dstTemp = new Image<Gray, Byte>(_src.Size);
 
-            if (Gaussian)
-                _dst = _dst.SmoothGaussian(5, 5, 0, 0);
+                dstTemp = _src.Convert<Gray, byte>();
 
-            CvInvoke.Canny(_dst, _dst, 50, 150);
+                if (Gaussian)
+                    dstTemp = dstTemp.SmoothGaussian(GaussianKernelSize, GaussianKernelSize, 0, 0);
 
-            return _dst.ToBitmap();
+                if (Canny)
+                    CvInvoke.Canny(dstTemp, dstTemp, 50, 150);
+
+                _dst = dstTemp;
+                return _dst.ToBitmap();
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+
+            return _dst?.ToBitmap();
         }
         
         public void Dispose()

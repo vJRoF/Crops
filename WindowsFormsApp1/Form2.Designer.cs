@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.cbGaussian = new System.Windows.Forms.CheckBox();
+            this.tbGaussKernel = new WindowsFormsApp1.IntTextBox();
+            this.cbCanny = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +51,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Чё вышло";
             // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 18);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(438, 429);
+            this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(450, 12);
@@ -58,15 +69,6 @@
             this.button1.Text = "Открыть";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 16);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(438, 431);
-            this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // trackBar1
             // 
@@ -83,17 +85,37 @@
             this.cbGaussian.AutoSize = true;
             this.cbGaussian.Location = new System.Drawing.Point(450, 78);
             this.cbGaussian.Name = "cbGaussian";
-            this.cbGaussian.Size = new System.Drawing.Size(70, 17);
+            this.cbGaussian.Size = new System.Drawing.Size(71, 17);
             this.cbGaussian.TabIndex = 3;
             this.cbGaussian.Text = "Gaussian";
             this.cbGaussian.UseVisualStyleBackColor = true;
             this.cbGaussian.CheckedChanged += new System.EventHandler(this.cbGaussian_CheckedChanged);
+            // 
+            // tbGaussKernel
+            // 
+            this.tbGaussKernel.Location = new System.Drawing.Point(527, 73);
+            this.tbGaussKernel.Name = "tbGaussKernel";
+            this.tbGaussKernel.Size = new System.Drawing.Size(25, 22);
+            this.tbGaussKernel.TabIndex = 4;
+            // 
+            // cbCanny
+            // 
+            this.cbCanny.AutoSize = true;
+            this.cbCanny.Location = new System.Drawing.Point(450, 117);
+            this.cbCanny.Name = "cbCanny";
+            this.cbCanny.Size = new System.Drawing.Size(57, 17);
+            this.cbCanny.TabIndex = 5;
+            this.cbCanny.Text = "Canny";
+            this.cbCanny.UseVisualStyleBackColor = true;
+            this.cbCanny.CheckedChanged += new System.EventHandler(this.cbCanny_CheckedChanged);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbCanny);
+            this.Controls.Add(this.tbGaussKernel);
             this.Controls.Add(this.cbGaussian);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.button1);
@@ -114,5 +136,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.CheckBox cbGaussian;
+        private IntTextBox tbGaussKernel;
+        private System.Windows.Forms.CheckBox cbCanny;
     }
 }

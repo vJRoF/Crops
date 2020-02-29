@@ -19,8 +19,23 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
+            
+            //tbGaussKernel
+
             _imageProcessor = new ImageProcessor();
             _imageProcessorRender = new ImageProcessorRender(_imageProcessor);
+
+            cbGaussian.Checked = _imageProcessor.Gaussian;
+            tbGaussKernel.Value = _imageProcessor.GaussianKernelSize;
+            tbGaussKernel.ValueChanged += TbGaussKernel_ValueChanged;
+
+            cbCanny.Checked = _imageProcessor.Canny;
+        }
+
+        private void TbGaussKernel_ValueChanged(object sender, int e)
+        {
+            _imageProcessor.GaussianKernelSize = e;
+            InvalidateRenderContainer();
         }
 
         private Control GetRenderContainer()
@@ -36,7 +51,8 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _imageProcessor.Open(@"C:\Users\vladi\Pictures\Saved Pictures\om2j_txb1e2yqhvmjeoi-cydtgo.png");
+            _imageProcessor.Open(@"C:\Users\MisterVovan\Documents\cards\raw\Scan_20170820 (36).tiff");
+            //_imageProcessor.Open(@"C:\Users\vladi\Pictures\Saved Pictures\om2j_txb1e2yqhvmjeoi-cydtgo.png");
             _imageProcessorRender.Fit(GetRenderContainer().Size);
             InvalidateRenderContainer();
         }
@@ -58,6 +74,14 @@ namespace WindowsFormsApp1
         {
             var cbGaussian = (sender as CheckBox);
             _imageProcessor.Gaussian = cbGaussian.Checked;
+
+            InvalidateRenderContainer();
+        }
+
+        private void cbCanny_CheckedChanged(object sender, EventArgs e)
+        {
+            var cbCanny = (sender as CheckBox);
+            _imageProcessor.Canny = cbCanny.Checked;
 
             InvalidateRenderContainer();
         }
