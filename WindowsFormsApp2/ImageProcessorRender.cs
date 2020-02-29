@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 
-namespace WindowsFormsApp1
+namespace WindowsFormsApp2
 {
     class ImageProcessorRender
     {
@@ -19,12 +19,12 @@ namespace WindowsFormsApp1
 
         public void Draw(Graphics g)
         {
-            var image = _imageProcessor.GetResultImage();
-            if (image == null)
+            var result = _imageProcessor.GetResultImage();
+            if (result == null)
                 return;
 
-            var drawSize = new RectangleF(0, 0, image.Width * Scale, image.Height * Scale);
-            g.DrawImage(image, drawSize);
+            var drawSize = new RectangleF(0, 0, result.Image.Width * Scale, result.Image.Height * Scale);
+            g.DrawImage(result.Image, drawSize);
 
             DrawLines(g);
         }
@@ -46,14 +46,12 @@ namespace WindowsFormsApp1
 
         internal void Fit(Size size)
         {
-            var image = _imageProcessor.GetResultImage();
-            if (image == null)
-                return;
+            var result = _imageProcessor.GetResultImage();
 
-            var scaleX = (float) size.Width / image.Width;
-            var scaleY = (float)size.Height / image.Height;
+            var scaleX = (float) size.Width / result.Image.Width;
+            var scaleY = (float)size.Height / result.Image.Height;
 
-            Scale = scaleX > scaleY ? scaleY : scaleX;
+            Scale = Math.Min(scaleX, scaleY);
         }
     }
 }

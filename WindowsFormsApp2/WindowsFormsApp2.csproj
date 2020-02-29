@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+	<Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.2.0.3662" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\DoubleTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\DoubleTextBoxProxy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\IntTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\IntTextBox.Designer.cs">
+      <DependentUpon>IntTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\IntTextBoxProxy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\NumberTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\NumberTextBox.Designer.cs">
+      <DependentUpon>NumberTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

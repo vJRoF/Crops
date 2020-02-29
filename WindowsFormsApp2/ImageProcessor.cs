@@ -1,11 +1,11 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
-using JetBrains.Annotations;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using WindowsFormsApp2.Tools;
 
-namespace WindowsFormsApp1
+namespace WindowsFormsApp2
 {
     class ImageProcessor : IDisposable
     {
@@ -28,8 +28,7 @@ namespace WindowsFormsApp1
             _src = new Image<Bgr, byte>(path);
         }
 
-        [CanBeNull]
-        public ImageProcessingResult GetResultImage()
+        public ImageProcessingResult? GetResultImage()
         {
             try
             {
@@ -62,11 +61,7 @@ namespace WindowsFormsApp1
                 Debug.WriteLine(ex.ToString());
             }
 
-            return new ImageProcessingResult
-            {
-                Image = _dst.ToBitmap(),
-                Lines = _lines
-            };
+            return new ImageProcessingResult(_dst.ConvertToBitmap(), _lines);
         }
 
         public LineSegment2D[] GetLines()
