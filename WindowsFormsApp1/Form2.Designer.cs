@@ -33,8 +33,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.cbGaussian = new System.Windows.Forms.CheckBox();
-            this.tbGaussKernel = new WindowsFormsApp1.IntTextBox();
             this.cbCanny = new System.Windows.Forms.CheckBox();
+            this.ntbGaussianKernelSize = new WindowsFormsApp1.Controls.IntTextBox();
+            this.dtbCannyThreshold1 = new WindowsFormsApp1.Controls.DoubleTextBox();
+            this.dtbCannyThreshold2 = new WindowsFormsApp1.Controls.DoubleTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -91,13 +93,6 @@
             this.cbGaussian.UseVisualStyleBackColor = true;
             this.cbGaussian.CheckedChanged += new System.EventHandler(this.cbGaussian_CheckedChanged);
             // 
-            // tbGaussKernel
-            // 
-            this.tbGaussKernel.Location = new System.Drawing.Point(527, 73);
-            this.tbGaussKernel.Name = "tbGaussKernel";
-            this.tbGaussKernel.Size = new System.Drawing.Size(25, 22);
-            this.tbGaussKernel.TabIndex = 4;
-            // 
             // cbCanny
             // 
             this.cbCanny.AutoSize = true;
@@ -109,13 +104,42 @@
             this.cbCanny.UseVisualStyleBackColor = true;
             this.cbCanny.CheckedChanged += new System.EventHandler(this.cbCanny_CheckedChanged);
             // 
+            // ntbGaussianKernelSize
+            // 
+            this.ntbGaussianKernelSize.Location = new System.Drawing.Point(528, 78);
+            this.ntbGaussianKernelSize.Name = "ntbGaussianKernelSize";
+            this.ntbGaussianKernelSize.Size = new System.Drawing.Size(89, 22);
+            this.ntbGaussianKernelSize.TabIndex = 6;
+            this.ntbGaussianKernelSize.Value = 0;
+            this.ntbGaussianKernelSize.ValueName = "KernelSize";
+            // 
+            // dtbCannyTreshold1
+            // 
+            this.dtbCannyThreshold1.Location = new System.Drawing.Point(450, 140);
+            this.dtbCannyThreshold1.Name = "dtbCannyTreshold1";
+            this.dtbCannyThreshold1.Size = new System.Drawing.Size(91, 22);
+            this.dtbCannyThreshold1.TabIndex = 7;
+            this.dtbCannyThreshold1.Value = 0D;
+            this.dtbCannyThreshold1.ValueName = "Threshold1";
+            // 
+            // dtbCannyThreshold2
+            // 
+            this.dtbCannyThreshold2.Location = new System.Drawing.Point(547, 140);
+            this.dtbCannyThreshold2.Name = "dtbCannyThreshold2";
+            this.dtbCannyThreshold2.Size = new System.Drawing.Size(93, 22);
+            this.dtbCannyThreshold2.TabIndex = 8;
+            this.dtbCannyThreshold2.Value = 0D;
+            this.dtbCannyThreshold2.ValueName = "Threshold2";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dtbCannyThreshold2);
+            this.Controls.Add(this.dtbCannyThreshold1);
+            this.Controls.Add(this.ntbGaussianKernelSize);
             this.Controls.Add(this.cbCanny);
-            this.Controls.Add(this.tbGaussKernel);
             this.Controls.Add(this.cbGaussian);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.button1);
@@ -136,7 +160,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.CheckBox cbGaussian;
-        private IntTextBox tbGaussKernel;
         private System.Windows.Forms.CheckBox cbCanny;
+        private Controls.IntTextBox ntbGaussianKernelSize;
+        private Controls.DoubleTextBox dtbCannyThreshold1;
+        private Controls.DoubleTextBox dtbCannyThreshold2;
     }
 }

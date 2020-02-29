@@ -26,10 +26,29 @@ namespace WindowsFormsApp1
             _imageProcessorRender = new ImageProcessorRender(_imageProcessor);
 
             cbGaussian.Checked = _imageProcessor.Gaussian;
-            tbGaussKernel.Value = _imageProcessor.GaussianKernelSize;
-            tbGaussKernel.ValueChanged += TbGaussKernel_ValueChanged;
+
+            ntbGaussianKernelSize.Value = _imageProcessor.GaussianKernelSize;
+            ntbGaussianKernelSize.ValueChanged += TbGaussKernel_ValueChanged;
 
             cbCanny.Checked = _imageProcessor.Canny;
+
+            dtbCannyThreshold1.Value = _imageProcessor.Threshold1;
+            dtbCannyThreshold1.ValueChanged += DtbCannyThreshold1_ValueChanged;
+
+            dtbCannyThreshold2.Value = _imageProcessor.Threshold2;
+            dtbCannyThreshold2.ValueChanged += DtbCannyThreshold2_ValueChanged;
+        }
+
+        private void DtbCannyThreshold2_ValueChanged(object sender, double e)
+        {
+            _imageProcessor.Threshold2 = e;
+            InvalidateRenderContainer();
+        }
+
+        private void DtbCannyThreshold1_ValueChanged(object sender, double e)
+        {
+            _imageProcessor.Threshold1 = e;
+            InvalidateRenderContainer();
         }
 
         private void TbGaussKernel_ValueChanged(object sender, int e)

@@ -17,6 +17,8 @@ namespace WindowsFormsApp1
 
 
         public bool Canny { get; internal set; } = true;
+        public double Threshold1 { get; internal set; } = 50;
+        public double Threshold2 { get; internal set; } = 150;
 
         public void Open(string path)
         {
@@ -39,7 +41,7 @@ namespace WindowsFormsApp1
                     dstTemp = dstTemp.SmoothGaussian(GaussianKernelSize, GaussianKernelSize, 0, 0);
 
                 if (Canny)
-                    CvInvoke.Canny(dstTemp, dstTemp, 50, 150);
+                    CvInvoke.Canny(dstTemp, dstTemp, Threshold1, Threshold2);
 
                 _dst = dstTemp;
                 return _dst.ToBitmap();

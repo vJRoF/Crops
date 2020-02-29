@@ -62,6 +62,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\DoubleTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DoubleTextBoxProxy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\IntTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\IntTextBox.Designer.cs">
+      <DependentUpon>IntTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IntTextBoxProxy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NumberTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NumberTextBox.Designer.cs">
+      <DependentUpon>NumberTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="CornerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,12 +112,10 @@
     <Compile Include="ResultForm.Designer.cs">
       <DependentUpon>ResultForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\IntTextBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\IntTextBox.Designer.cs">
-      <DependentUpon>IntTextBox.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Tools\Calculator.cs" />
+    <EmbeddedResource Include="Controls\NumberTextBox.resx">
+      <DependentUpon>NumberTextBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CornerControl.resx">
       <DependentUpon>CornerControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,9 +136,6 @@
     </Compile>
     <EmbeddedResource Include="ResultForm.resx">
       <DependentUpon>ResultForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\IntTextBox.resx">
-      <DependentUpon>IntTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
