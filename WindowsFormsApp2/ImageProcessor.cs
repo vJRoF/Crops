@@ -9,9 +9,9 @@ namespace WindowsFormsApp2
 {
     class ImageProcessor : IDisposable
     {
-        private Image<Bgr, Byte> _src;
-        private Image<Gray, Byte> _dst;
-        private LineSegment2D[] _lines;
+        private Image<Bgr, Byte>? _src;
+        private Image<Gray, Byte>? _dst;
+        private LineSegment2D[]? _lines;
 
         public bool Gaussian { get; internal set; } = true;
         public int GaussianKernelSize { get; internal set; } = 5;
@@ -23,6 +23,15 @@ namespace WindowsFormsApp2
 
         public bool HoughLines { get; internal set; } = true;
 
+
+        public double MaskLowerHue { get; internal set; } = 30;
+        public double MaskLowerSaturation { get; internal set; } = 5;
+        public double MaskLowerValue { get; set; } = 200;
+
+        public double MaskUpperHue { get; internal set; } = 40;
+        public double MaskUpperSaturation { get; internal set; } = 10;
+        public double MaskUpperValue { get; set; } = 220;
+
         public void Open(string path)
         {
             _src = new Image<Bgr, byte>(path);
@@ -30,14 +39,22 @@ namespace WindowsFormsApp2
 
         public ImageProcessingResult? GetResultImage()
         {
-            try
-            {
-                if (_src == null)
+            if (_src == null)
                     return null;
 
+            _dst = _src
+                .ToHsv()
+                .Mask(
+                    true,
+                    new Hsv(MaskLowerHue, MaskLowerSaturation, MaskLowerValue),
+                    new Hsv(MaskUpperHue, MaskUpperSaturation, MaskUpperValue));
+
+            try
+            {
                 var dstTemp = new Image<Gray, Byte>(_src.Size);
 
-                dstTemp = _src.Convert<Gray, byte>();
+
+                //dstTemp = _src.Convert<Gray, byte>();
 
                 if (Gaussian)
                     dstTemp = dstTemp.SmoothGaussian(GaussianKernelSize, GaussianKernelSize, 0, 0);
@@ -54,14 +71,14 @@ namespace WindowsFormsApp2
                                        30, //min Line width
                                        10); //gap between lines
 
-                _dst = dstTemp;
             }
             catch(Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
             }
 
-            return new ImageProcessingResult(_dst.ConvertToBitmap(), _lines);
+            return new ImageProcessingResult(_dst.ConvertToBitmap(), new LineSegment2D[0]);
+            return new ImageProcessingResult(_dst.ConvertToBitmap(), _lines ?? Array.Empty<LineSegment2D>());
         }
 
         public LineSegment2D[] GetLines()

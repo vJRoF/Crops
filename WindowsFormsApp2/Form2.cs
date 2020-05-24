@@ -39,19 +39,19 @@ namespace WindowsFormsApp2
             dtbCannyThreshold2.ValueChanged += DtbCannyThreshold2_ValueChanged;
         }
 
-        private void DtbCannyThreshold2_ValueChanged(object sender, double e)
+        private void DtbCannyThreshold2_ValueChanged(object? sender, double e)
         {
             _imageProcessor.Threshold2 = e;
             InvalidateRenderContainer();
         }
 
-        private void DtbCannyThreshold1_ValueChanged(object sender, double e)
+        private void DtbCannyThreshold1_ValueChanged(object? sender, double e)
         {
             _imageProcessor.Threshold1 = e;
             InvalidateRenderContainer();
         }
 
-        private void TbGaussKernel_ValueChanged(object sender, int e)
+        private void TbGaussKernel_ValueChanged(object? sender, int e)
         {
             _imageProcessor.GaussianKernelSize = e;
             InvalidateRenderContainer();
@@ -83,26 +83,32 @@ namespace WindowsFormsApp2
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            var trackbar = sender as TrackBar;
-            _imageProcessorRender.Scale = (float) trackbar.Value / 30 ;
+            if (sender is TrackBar trackbar)
+            {
+                _imageProcessorRender.Scale = (float) trackbar.Value / 30 ;
 
-            InvalidateRenderContainer();
+                 InvalidateRenderContainer();
+            }
         }
 
         private void cbGaussian_CheckedChanged(object sender, EventArgs e)
         {
-            var cbGaussian = (sender as CheckBox);
-            _imageProcessor.Gaussian = cbGaussian.Checked;
+            if (sender is CheckBox cbGaussian)
+            {
+                _imageProcessor.Gaussian = cbGaussian.Checked;
 
-            InvalidateRenderContainer();
+                InvalidateRenderContainer();
+            }
         }
 
         private void cbCanny_CheckedChanged(object sender, EventArgs e)
         {
-            var cbCanny = (sender as CheckBox);
-            _imageProcessor.Canny = cbCanny.Checked;
+            if (sender is CheckBox cbCanny)
+            {
+                _imageProcessor.Canny = cbCanny.Checked;
 
-            InvalidateRenderContainer();
+                InvalidateRenderContainer();
+            }
         }
     }
 }

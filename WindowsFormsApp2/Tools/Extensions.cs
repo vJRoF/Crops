@@ -16,5 +16,13 @@ namespace WindowsFormsApp2.Tools
             using var ms = new MemoryStream(vector.ToArray());
             return new Bitmap(ms);
         }
+
+        internal static Bitmap ConvertToBitmap(this Image<Hsv, Byte> image)
+        {
+            var vector = new VectorOfByte();
+            CvInvoke.Imencode(".png", image, vector);
+            using var ms = new MemoryStream(vector.ToArray());
+            return new Bitmap(ms);
+        }
     }
 }
